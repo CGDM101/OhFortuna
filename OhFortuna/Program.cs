@@ -9,26 +9,45 @@ namespace OhFortuna
         {
             int pix = 500;
 
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Console.WriteLine("*** VÄLKOMMEN ***");
-            //Thread.Sleep(1000);
-            //Console.Clear();
-            //Console.ForegroundColor = ConsoleColor.Blue;
-            //Console.WriteLine("*** VÄLKOMMEN ***");
-            //Thread.Sleep(1000);
-            //Console.Clear();
-            //Console.ForegroundColor = ConsoleColor.Yellow;
-            //Console.WriteLine("*** VÄLKOMMEN ***");
-            //Thread.Sleep(1000);
-            //Console.ForegroundColor = ConsoleColor.White;
-            //Console.Write('.');Thread.Sleep(500); Console.Write('.'); Thread.Sleep(500); Console.Write('.'); Thread.Sleep(500);
-            //Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("* * * * * VÄLKOMMEN * * * * *");
+            Thread.Sleep(1000);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(" * * * *  VÄLKOMMEN  * * * * ");
+            Thread.Sleep(1000);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("* * * * * VÄLKOMMEN * * * * *");
+            Thread.Sleep(1000);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(" * * * *  VÄLKOMMEN  * * * * ");
+            Thread.Sleep(1000);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("* * * * * VÄLKOMMEN * * * * *");
+            Thread.Sleep(1000);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(" * * * *  VÄLKOMMEN  * * * * ");
+            Thread.Sleep(1000);
+
+
+
+
+
+            Console.ForegroundColor = ConsoleColor.White;
+             
+            Console.Write('O'); Thread.Sleep(800); Console.Write('H'); Console.Write(' '); Thread.Sleep(800); Console.Write('F'); Thread.Sleep(800); Console.Write('O'); Thread.Sleep(800); Console.Write('R'); Thread.Sleep(800); Console.Write('T'); Thread.Sleep(800); Console.Write('U'); Thread.Sleep(800); Console.Write('N'); Thread.Sleep(800); Console.Write('A'); Thread.Sleep(800);
+
+            Console.WriteLine();
 
             bool done = false;
             while (!done && pix > 0)
             {
                 Console.WriteLine("Vill du spela en runda till? y/n");
-                string answer = Console.ReadLine();
+                string answer = Console.ReadLine().ToLower();
                 if (answer == "n" || pix < 0)
                 {
                     Console.WriteLine("Välkommen åter.");
