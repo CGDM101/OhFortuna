@@ -3,52 +3,52 @@ using System.Threading;
 
 namespace OhFortuna
 {
+    // Spelaren får inte satsa mer än vad denne har på banken. EXAKT PIX (T EX 500) FUNKAR INTE??!!
+
+    // Om spelaren anger ett felaktigt värde vid inmatning ska spelaren informeras om detta, men programmet ska inte krascha. TODO
     class Program
     {
         static void Main(string[] args)
         {
             int pix = 500;
 
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("* * * * * VÄLKOMMEN * * * * *");
-            Thread.Sleep(1000);
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(" * * * *  VÄLKOMMEN  * * * * ");
-            Thread.Sleep(1000);
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("* * * * * VÄLKOMMEN * * * * *");
-            Thread.Sleep(1000);
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(" * * * *  VÄLKOMMEN  * * * * ");
-            Thread.Sleep(1000);
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("* * * * * VÄLKOMMEN * * * * *");
-            Thread.Sleep(1000);
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(" * * * *  VÄLKOMMEN  * * * * ");
-            Thread.Sleep(1000);
+            //Console.ForegroundColor = ConsoleColor.DarkCyan;
+            //Console.WriteLine("* * * * * VÄLKOMMEN * * * * *");
+            //Thread.Sleep(1000);
+            //Console.Clear();
+            //Console.ForegroundColor = ConsoleColor.Magenta;
+            //Console.WriteLine(" * * * *  VÄLKOMMEN  * * * * ");
+            //Thread.Sleep(1000);
+            //Console.Clear();
+            //Console.ForegroundColor = ConsoleColor.DarkCyan;
+            //Console.WriteLine("* * * * * VÄLKOMMEN * * * * *");
+            //Thread.Sleep(1000);
+            //Console.Clear();
+            //Console.ForegroundColor = ConsoleColor.Magenta;
+            //Console.WriteLine(" * * * *  VÄLKOMMEN  * * * * ");
+            //Thread.Sleep(1000);
+            //Console.Clear();
+            //Console.ForegroundColor = ConsoleColor.DarkCyan;
+            //Console.WriteLine("* * * * * VÄLKOMMEN * * * * *");
+            //Thread.Sleep(1000);
+            //Console.Clear();
+            //Console.ForegroundColor = ConsoleColor.Magenta;
+            //Console.WriteLine(" * * * *  VÄLKOMMEN  * * * * ");
+            //Thread.Sleep(1000);
 
+            //Console.ForegroundColor = ConsoleColor.White;
 
-
-
-
-            Console.ForegroundColor = ConsoleColor.White;
-             
-            Console.Write('O'); Thread.Sleep(800); Console.Write('H'); Console.Write(' '); Thread.Sleep(800); Console.Write('F'); Thread.Sleep(800); Console.Write('O'); Thread.Sleep(800); Console.Write('R'); Thread.Sleep(800); Console.Write('T'); Thread.Sleep(800); Console.Write('U'); Thread.Sleep(800); Console.Write('N'); Thread.Sleep(800); Console.Write('A'); Thread.Sleep(800);
+            //Console.Clear();
+            //Thread.Sleep(800); Console.Write('O'); Thread.Sleep(800); Console.Clear(); Console.Write(" H"); Thread.Sleep(800); Console.Clear(); Console.Write("   "); Thread.Sleep(800); Console.Clear(); Console.Write("   F"); Thread.Sleep(800); Console.Clear(); Console.Write("    O"); Thread.Sleep(800); Console.Clear(); Console.Write("     R"); Thread.Sleep(800); Console.Clear(); Console.Write("      T"); Thread.Sleep(800); Console.Clear(); Console.Write("       U"); Thread.Sleep(800); Console.Clear(); Console.Write("        N"); Thread.Sleep(800); Console.Clear(); Console.Write("         A"); Thread.Sleep(800); Console.Clear(); Console.WriteLine("OH FORTUNA"); Thread.Sleep(800);
 
             Console.WriteLine();
 
             bool done = false;
             while (!done && pix > 0)
             {
-                Console.WriteLine("Vill du spela en runda till? y/n");
+                Console.WriteLine("Vill du spela en runda? y/n");
                 string answer = Console.ReadLine().ToLower();
-                if (answer == "n" || pix < 0)
+                if (answer == "n" || pix < 50)
                 {
                     Console.WriteLine("Välkommen åter.");
                     done = true;
@@ -57,11 +57,12 @@ namespace OhFortuna
                 {
                     Console.WriteLine($"Du har {pix} pix, satsa minst 50!");
                     int userSatsning = int.Parse(Console.ReadLine());
-                    while (userSatsning > pix || userSatsning < 50) // går till rad 30 om satsar exakt 500 (el motsv)
+                    while (userSatsning >= pix || userSatsning < 50) // OM INPUT EXAKT PIX - GÅR IN I LOOPEN :(
                     {
                         Console.WriteLine("Du kan inte satsa mer än du har eller under 50! Satsa igen!");
                         userSatsning = int.Parse(Console.ReadLine());
                     }
+
                     if (userSatsning < pix)
                     {
                         pix -= userSatsning;
@@ -88,25 +89,30 @@ namespace OhFortuna
                             int dice3number = dice1.Next(1, 7);
                             Console.WriteLine($"Tärningarna visar {dice1number}, {dice2number} och {dice3number}");
 
+                            // INGEN TÄRNING VISADE RÄTT:
                             if (userChoice != dice1number && userChoice != dice2number && userChoice != dice3number)
                             {
                                 Console.WriteLine("Ingen tärning visade ditt lyckotal :(");
                                 Console.WriteLine("Du har: " + pix);
                             }
+                            
+                            // EN TÄRNING VISADE RÄTT:
                             else if (userChoice == dice1number || userChoice == dice2number || userChoice == dice3number)
                             {
-                                // visas även om två tärningar rätt:
                                 Console.WriteLine("En tärning visade rätt. Du får dubbla insatsen, dvs: " + userSatsning * 2);
                                 pix += (userSatsning * 2);
                                 Console.WriteLine("Det du har nu är: " + pix);
                             }
-                            else if (userChoice == dice1number && userChoice == dice2number || userChoice == dice1number && userChoice == dice3number || userChoice == dice2number && userChoice == dice1number || userChoice == dice2number && userChoice == dice3number || userChoice == dice3number && userChoice == dice1number || userChoice == dice3number && userChoice == dice2number) // OBS
+
+                            // TVÅ TÄRNINGAR VISADE RÄTT
+                            else if (userChoice == dice1number && userChoice == dice2number || userChoice == dice1number && userChoice == dice3number || userChoice == dice2number && userChoice == dice1number || userChoice == dice2number && userChoice == dice3number || userChoice == dice3number && userChoice == dice1number || userChoice == dice3number && userChoice == dice2number)
                             {
                                 Console.WriteLine("Två tärningar visade rätt, du får tre gånger insatsen, dvs: " + userSatsning * 3);
                                 pix += (userSatsning * 3);
                                 Console.WriteLine("Det du har nu är: " + pix);
-
                             }
+
+                            // TRE (ALLA) TÄRNINGAR VISADE RÄTT:
                             else if (userChoice == dice1number && userChoice == dice2number && userChoice == dice3number)
                             {
                                 Console.WriteLine("Alla tärningar visade rätt! Du får fyra gånger insatsen, dvs: " + userSatsning * 4);
@@ -114,7 +120,12 @@ namespace OhFortuna
                                 Console.WriteLine("Det du har nu är: " + pix);
                             }
                         }
+                    }
 
+                    if (pix < 50)
+                    {
+                        done = true;
+                        Console.WriteLine("Nu är du under 50 pix och får inte spela längre. Välkommen åter.");
                     }
                 }
             }
