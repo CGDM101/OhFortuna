@@ -89,18 +89,11 @@ namespace OhFortuna
                             int dice3number = dice1.Next(1, 7);
                             Console.WriteLine($"Tärningarna visar {dice1number}, {dice2number} och {dice3number}");
 
-                            // INGEN TÄRNING VISADE RÄTT:
-                            if (userChoice != dice1number && userChoice != dice2number && userChoice != dice3number)
+                            // TRE (ALLA) TÄRNINGAR VISADE RÄTT:
+                            if (userChoice == dice1number && userChoice == dice2number && userChoice == dice3number)
                             {
-                                Console.WriteLine("Ingen tärning visade ditt lyckotal :(");
-                                Console.WriteLine("Du har: " + pix);
-                            }
-                            
-                            // EN TÄRNING VISADE RÄTT:
-                            else if (userChoice == dice1number || userChoice == dice2number || userChoice == dice3number)
-                            {
-                                Console.WriteLine("En tärning visade rätt. Du får dubbla insatsen, dvs: " + userSatsning * 2);
-                                pix += (userSatsning * 2);
+                                Console.WriteLine("Alla tärningar visade rätt! Du får fyra gånger insatsen, dvs: " + userSatsning * 4);
+                                pix += (userSatsning * 4);
                                 Console.WriteLine("Det du har nu är: " + pix);
                             }
 
@@ -112,12 +105,19 @@ namespace OhFortuna
                                 Console.WriteLine("Det du har nu är: " + pix);
                             }
 
-                            // TRE (ALLA) TÄRNINGAR VISADE RÄTT:
-                            else if (userChoice == dice1number && userChoice == dice2number && userChoice == dice3number)
+                            // EN TÄRNING VISADE RÄTT:
+                            else if (userChoice == dice1number || userChoice == dice2number || userChoice == dice3number)
                             {
-                                Console.WriteLine("Alla tärningar visade rätt! Du får fyra gånger insatsen, dvs: " + userSatsning * 4);
-                                pix += (userSatsning * 4);
+                                Console.WriteLine("En tärning visade rätt. Du får dubbla insatsen, dvs: " + userSatsning * 2);
+                                pix += (userSatsning * 2);
                                 Console.WriteLine("Det du har nu är: " + pix);
+                            }
+
+                            // INGEN TÄRNING VISADE RÄTT:
+                            else if (userChoice != dice1number && userChoice != dice2number && userChoice != dice3number)
+                            {
+                                Console.WriteLine("Ingen tärning visade ditt lyckotal :(");
+                                Console.WriteLine("Du har: " + pix);
                             }
                         }
                     }
