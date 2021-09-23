@@ -91,7 +91,7 @@ namespace OhFortuna
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine(e.Message + "Använd bara 1, 2, 3, 4, 5 eller 6!");
+                            Console.WriteLine(e.Message + " Använd bara 1, 2, 3, 4, 5 eller 6!");
                         }
 
                         while (userChoice < 1 || userChoice > 6) // mindre än ett ELLER större än 6
