@@ -64,7 +64,7 @@ namespace OhFortuna
                         Console.WriteLine(e.Message + "Skriva bara giltiga värden, dvs heltal!");
                     }
 
-                    while (userSatsning >= pix || userSatsning < 50) // OM INPUT EXAKT PIX - GÅR IN I LOOPEN :(
+                    while (userSatsning > pix || userSatsning < 50)
                     {
                         Console.WriteLine("Du kan inte satsa mer än du har eller under 50! Satsa igen!");
                         try
@@ -77,7 +77,7 @@ namespace OhFortuna
                         }
                     }
 
-                    if (userSatsning < pix)
+                    if (userSatsning <= pix)
                     {
                         pix -= userSatsning;
                         Console.WriteLine("Du satsade: " + userSatsning);
